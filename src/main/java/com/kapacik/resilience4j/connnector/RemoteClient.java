@@ -1,4 +1,4 @@
-package com.telstra.resilience4j.connnector;
+package com.kapacik.resilience4j.connnector;
 
 import io.reactivex.Observable;
 

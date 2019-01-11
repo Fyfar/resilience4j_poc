@@ -1,7 +1,7 @@
-package com.telstra.resilience4j.service;
+package com.kapacik.resilience4j.service;
 
 
-import com.telstra.resilience4j.connnector.RemoteClient;
+import com.kapacik.resilience4j.connnector.RemoteClient;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.vavr.control.Try;

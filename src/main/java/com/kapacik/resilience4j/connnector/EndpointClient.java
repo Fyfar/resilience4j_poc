@@ -1,7 +1,7 @@
-package com.telstra.resilience4j.connnector;
+package com.kapacik.resilience4j.connnector;
 
 
-import com.telstra.resilience4j.exception.BusinessException;
+import com.kapacik.resilience4j.exception.BusinessException;
 
 import io.reactivex.Observable;
 import org.springframework.http.HttpStatus;

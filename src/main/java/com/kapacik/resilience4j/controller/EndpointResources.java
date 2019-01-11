@@ -1,6 +1,6 @@
-package com.telstra.resilience4j.controller;
+package com.kapacik.resilience4j.controller;
 
-import com.telstra.resilience4j.service.BusinessService;
+import com.kapacik.resilience4j.service.BusinessService;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;

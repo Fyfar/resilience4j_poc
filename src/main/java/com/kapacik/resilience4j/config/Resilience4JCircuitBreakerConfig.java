@@ -1,16 +1,17 @@
-package com.telstra.resilience4j.config;
+package com.kapacik.resilience4j.config;
 
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
 import static io.vavr.API.Match;
 import static io.vavr.Predicates.instanceOf;
 
-import com.telstra.resilience4j.exception.BusinessException;
+import com.kapacik.resilience4j.exception.BusinessException;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.circuitbreaker.autoconfigure.CircuitBreakerProperties;
+import io.vavr.API;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,7 +28,7 @@ public class Resilience4JCircuitBreakerConfig {
         CircuitBreakerConfig circuitBreakerConfig = circuitBreakerProperties.buildCircuitBreakerConfig(null)
                 .waitDurationInOpenState(Duration.ofMillis(5_000))
                 .recordFailure(throwable -> Match(throwable).of(
-                        Case($(instanceOf(BusinessException.class)), false),
+                        API.Case(API.$(instanceOf(BusinessException.class)), false),
                         Case($(), true)))
                 .build();
 

@@ -1,4 +1,4 @@
-package com.telstra.resilience4j.exception;
+package com.kapacik.resilience4j.exception;
 
 public class BusinessException extends RuntimeException {
 
