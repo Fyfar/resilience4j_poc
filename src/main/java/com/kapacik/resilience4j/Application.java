@@ -18,12 +18,7 @@ public class Application {
 	}
 
 	@Bean
-	public HealthIndicator vports(CircuitBreakerRegistry circuitBreakerRegistry){
-		return new CircuitBreakerHealthIndicator(circuitBreakerRegistry.circuitBreaker("vports"));
-	}
-
-	@Bean
 	public HealthIndicator endpoints(CircuitBreakerRegistry circuitBreakerRegistry){
-		return new CircuitBreakerHealthIndicator(circuitBreakerRegistry.circuitBreaker("endpoints"));
+		return new CircuitBreakerHealthIndicator(circuitBreakerRegistry.circuitBreaker("endpoint"));
 	}
 }

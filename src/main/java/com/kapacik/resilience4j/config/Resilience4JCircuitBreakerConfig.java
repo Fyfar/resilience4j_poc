@@ -25,7 +25,8 @@ public class Resilience4JCircuitBreakerConfig {
     @Bean
     public CircuitBreaker circuitBreaker(CircuitBreakerRegistry circuitBreakerRegistry,
             CircuitBreakerProperties circuitBreakerProperties) {
-        CircuitBreakerConfig circuitBreakerConfig = circuitBreakerProperties.buildCircuitBreakerConfig(null)
+        CircuitBreakerConfig circuitBreakerConfig = circuitBreakerProperties.buildCircuitBreakerConfig(
+                circuitBreakerProperties.getBackends().get("endpointClient"))
                 .waitDurationInOpenState(Duration.ofMillis(5_000))
                 .recordFailure(throwable -> Match(throwable).of(
                         API.Case(API.$(instanceOf(BusinessException.class)), false),
