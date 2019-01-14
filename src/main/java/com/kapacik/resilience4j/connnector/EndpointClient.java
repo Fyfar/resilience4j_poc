@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpServerErrorException;
 
-@CircuitBreaker(backend = "endpointClient")
+@CircuitBreaker(name = "endpointClient")
 @Component
 public class EndpointClient implements RemoteClient {
 
