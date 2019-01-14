@@ -6,12 +6,13 @@ import static io.vavr.API.Match;
 import static io.vavr.Predicates.instanceOf;
 
 import com.kapacik.resilience4j.exception.BusinessException;
-
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.circuitbreaker.autoconfigure.CircuitBreakerProperties;
+import io.github.resilience4j.circuitbreaker.monitoring.health.CircuitBreakerHealthIndicator;
 import io.vavr.API;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,6 +35,11 @@ public class Resilience4JCircuitBreakerConfig {
                 .build();
 
         return circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME, circuitBreakerConfig);
+    }
+
+    @Bean
+    public HealthIndicator endpoints(CircuitBreakerRegistry circuitBreakerRegistry){
+        return new CircuitBreakerHealthIndicator(circuitBreakerRegistry.circuitBreaker("endpoint"));
     }
 
 }

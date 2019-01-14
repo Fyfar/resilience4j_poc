@@ -2,13 +2,13 @@ package com.kapacik.resilience4j.connnector;
 
 
 import com.kapacik.resilience4j.exception.BusinessException;
-
-import io.reactivex.Observable;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpServerErrorException;
 
-@Component(value = "endpointClient")
+@CircuitBreaker(backend = "endpointClient")
+@Component
 public class EndpointClient implements RemoteClient {
 
     @Override
@@ -24,10 +24,5 @@ public class EndpointClient implements RemoteClient {
     @Override
     public String ignoreException() {
         throw new BusinessException("This exception is ignored by the CircuitBreaker of endpoint client");
-    }
-
-    @Override
-    public Observable<String> methodWhichReturnsAStream() {
-        return Observable.never();
     }
 }
